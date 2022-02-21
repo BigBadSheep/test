@@ -9,6 +9,7 @@ ps -f                 full-format, including command lines
 ```
 ![image](https://user-images.githubusercontent.com/47614594/154872675-bcd18ea0-f4e6-47c9-914c-9f27bb1915e2.png)
 
+* UID – numeric user ID. 0 - root , 1-100 demons, >100 users
 * PID – This is the unique process ID. 
 * PID 0 - swapper/sched - used to control memory. PID 1 - Init - Open other process. 
 This number may be used as a parameter in various function calls, allowing processes to be manipulated, such as adjusting the process's priority or killing it altogether. 
