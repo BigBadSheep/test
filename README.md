@@ -152,3 +152,5 @@ or
 # systemctl restart NetworkManager - AlmaLinux
 # systemctl restart NetworkManager.service - centos
 ```
+#### Summary: 
+it can be made by ifconfig or nmcli
