@@ -2,7 +2,7 @@
 
 ## 1) ps -ef | grep python | wc -l
  
-1. basic linux syntax *comand * --/- switch for commands options
+#### 1. basic linux syntax *comand * --/- switch for commands options
 ```
 ps -e or -a           show all process 
 ps -f                 full-format, including command lines
@@ -19,7 +19,7 @@ This number may be used as a parameter in various function calls, allowing proce
 
 ```|``` in linux send output from privius commnad to next command
 
-2. ``` grep python``` - Usage: grep [OPTION]... PATTERNS [FILE]...
+#### 2. ``` grep python``` - Usage: grep [OPTION]... PATTERNS [FILE]...
 
 ![image](https://user-images.githubusercontent.com/47614594/154873647-21eabab4-eccc-4a33-9eea-f9d7ce554a07.png)
 
@@ -29,7 +29,7 @@ Example: grep -i 'hello world' menu.h main.c
 
 PATTERNS can contain multiple patterns separated by **newlines**. - _this newlines will be uesd in wc_
 
-3. ```  wc -l, --lines            print the newline counts```- Usage: wc [OPTION]... [FILE]... 
+#### 3. ```  wc -l, --lines            print the newline counts```- Usage: wc [OPTION]... [FILE]... 
 
 ![image](https://user-images.githubusercontent.com/47614594/154873728-5e54cb85-79d7-4d0b-8177-a6e13d0a0fba.png)
 
@@ -45,14 +45,38 @@ more than one FILE is specified.
 a) it's a IPv4 Adress 
 ![image](https://user-images.githubusercontent.com/47614594/154874690-a4c2d397-a3a7-4e45-a402-97546a06335b.png)
 
-+ 127.0.0.1 – 127.255.255.254 (loopback) and 169.254.0.1 – 169.254.255.254 (ang. Local-Link) or 192.0.2.0 – 192.0.2.254 (ang. Test-Net)
+we need to remeber about 127.0.0.1 – 127.255.255.254 (loopback) and 169.254.0.1 – 169.254.255.254 (ang. Local-Link) or 192.0.2.0 – 192.0.2.254 (ang. Test-Net)
 
 it's out of private range (+those special one) it mean it'a public IP. This ip belond to  OrgName: T-Mobile USA, Inc. :) 
 
 ## 3) How many IP address are available in this subnet 192.168.0.0 / 28
 
-number of 1 in mast - 28
+number of 1 in mask - 28
 
 number 0 in mask = 32-28=**4**
 
 Number of host = 2^**4**-2=16-2=14 // we need to decrease by 2 beasue 192.168.0.0 is network address, and a 192.168.0.15 is brodcast.
+
+## 4) lsof | grep /tmp 2>&1 | awk {'print $2'} | sort -u
+
+#### 1. lsof is a command meaning "list open files", which is used in many Unix-like systems to report a list of all open files and the processes that opened them. 
+
+Open files in the system include disk files, named pipes, network sockets and devices opened by all processes. One use for this command is when a disk cannot be unmounted because (unspecified) files are in use. The listing of open files can be consulted (suitably filtered if necessary) to identify the process that is using the files. 
+
+![image](https://user-images.githubusercontent.com/47614594/154877179-f29e6a1c-fbcc-427e-8c47-7ab61a1186f3.png)
+
+#### 2. grep /tmp 2>&1 
+
+> standard solutions and outputs in linux outputs are numbered (STDIN - 0 STDOUT - 1, DERR - 2), to redirect one of them to the other, you need to fill in the spare (2> 1 redirect STDERR STDOUT, 1> & 2 redirect STDOUT to STDERR etc.) .
+> The whole thing can be explained as: Redirect standard error entries to standard games, and redirect standard games to null.
+
+
+It mean that typical serching "/tmp" 
+![image](https://user-images.githubusercontent.com/47614594/154877995-e3b5bf24-ef26-43c0-8ae9-69cc997af769.png)
+
+but now "2>&1 " Redirect DERR(error messages) in to normal nomralout. **It mean our commnand collect errors AND a normal output. **
+#### 3. awk {'print $2'}
+
+AWK is a domain-specific language designed for text processing and typically used as a data extraction and reporting tool.
+
+syntax: awk options 'selection _criteria {action }' input-file > output-file
