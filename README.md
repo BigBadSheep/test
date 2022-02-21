@@ -144,9 +144,11 @@ sudo systemctl restart networking.service
 
 for centos and redhat linux - https://devconnected.com/how-to-change-ip-address-on-linux/ 
 
-nmcli - is used in AlmaLinux exp. to reset interface
+nmcli - is used in AlmaLinux or centos exp. to reset interface - https://www.layerstack.com/resources/tutorials/How-to-restart-Network-Interface-or-Network-Adapter-on-Linux-and-Windows-Cloud-Servers
 ```
 # nmcli networking off
 # nmcli networking on
 or
-# systemctl restart NetworkManager```
+# systemctl restart NetworkManager - AlmaLinux
+# systemctl restart NetworkManager.service - centos
+```
