@@ -80,3 +80,16 @@ but now "2>&1 " Redirect DERR(error messages) in to normal nomralout. **It mean 
 AWK is a domain-specific language designed for text processing and typically used as a data extraction and reporting tool.
 
 syntax: awk options 'selection _criteria {action }' input-file > output-file
+
+awk {'print $2'} - use command print to show result on termina, $2 contain hole info in 2nd column. (in our command 2nd column is a PID-expalained before).
+![image](https://user-images.githubusercontent.com/47614594/154880257-80b40fb7-c7da-448f-8867-132d359fb446.png)
+
+#### 4. sort -u
+
+Write sorted concatenation of all FILE(s) to standard output.
+Usage: sort [OPTION]... [FILE]...
+
+```sort  -u, --unique              with -c, check for strict ordering;```
+![image](https://user-images.githubusercontent.com/47614594/154880621-7510f80c-51a6-4f63-868e-8425f9f41196.png)
+
+_**On end i can guess**_: we collect all open files/network sockets/etcetras in system, we filter those informations to find only form /temp, then we try to collet all notworking "process" **instead**/with insted normal one. Then we collest just PID of notworking process, last step will be sort and take uniqe PIDS.  
