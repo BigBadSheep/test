@@ -95,3 +95,19 @@ Usage: sort [OPTION]... [FILE]...
 ![image](https://user-images.githubusercontent.com/47614594/154880621-7510f80c-51a6-4f63-868e-8425f9f41196.png)
 
 _**On end i can guess**_: we collect all open files/network sockets/etcetras in system, we filter those informations to find only form /temp, then we try to collet all notworking "process" **instead**/with insted normal one. Then we collest just PID of notworking process, last step will be sort and take uniqe PIDS.  
+
+## 5) How would you check the status of a service running on a centos 8 machine?
+
+ofcourse service --status-all is deprecated
+
+i will use: 
+
+```systemctl
+systemctl | more
+systemctl | grep httpd
+systemctl list-units --type service
+systemctl list-units --type mount```
+
+or
+
+```systemctl list-unit-files```
