@@ -106,8 +106,47 @@ i will use:
 systemctl | more
 systemctl | grep httpd
 systemctl list-units --type service
-systemctl list-units --type mount```
+systemctl list-units --type mount
+```
 
+OR
+```
+systemctl list-unit-files
+```
+i can use command 
+
+```systemd-cgtop``` to see if service dosen't take 99% of cpu 
+
+i use few times in my work experiance this command : 
+
+```systemctl status *service name*```
+
+## 5) If I wanted to set a static IP address on an interface which should be persisted over reboot, should I use the command
+
+ipconfig - used in windows - NOT ONE I MADE A MISTAKE :D 
+
+ifconfig - it wille be lost after reboot - it can be fixed by:
+
+modify configuration files like /etc/network/interfaces. For example, to disable an interface you can simply remove its config part from the file.
+
+Content of /etc/network/interfaces:
+```
+iface eth0 inet static
+address <ip_address>
+netmask <network_mask>
+gateway <gateway_ip>
+````
+
+Then we need to reload a interaface 
+```
+sudo systemctl restart networking.service
+```
+
+for centos and redhat linux - https://devconnected.com/how-to-change-ip-address-on-linux/ 
+
+nmcli - is used in AlmaLinux exp. to reset interface
+```
+# nmcli networking off
+# nmcli networking on
 or
-
-```systemctl list-unit-files```
+# systemctl restart NetworkManager```
