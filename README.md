@@ -123,7 +123,7 @@ i use few times in my work experiance this command :
 
 ## 6) If I wanted to set a static IP address on an interface which should be persisted over reboot, should I use the command
 
-1. ipconfig - used in windows - just show ip configuration - can't help us. On windows we need gui or **netsh** to make any changes(not release)
+1. ipconfig - used in windows - just show ip configuration - can't help us. On windows we need gui or **netsh** to make any changes
 
 ![image](https://user-images.githubusercontent.com/47614594/155053302-1bbaec82-6d86-434f-8d90-1426856a7c0f.png)
 
