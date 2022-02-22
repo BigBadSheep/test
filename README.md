@@ -121,13 +121,16 @@ i use few times in my work experiance this command :
 
 ```systemctl status *service name*```
 
-## 5) If I wanted to set a static IP address on an interface which should be persisted over reboot, should I use the command
+## 6) If I wanted to set a static IP address on an interface which should be persisted over reboot, should I use the command
 
-ipconfig - used in windows - NOT ONE I MADE A MISTAKE :D 
+1. ipconfig - used in windows - just show ip configuration - can't help us. On windows we need gui or **netsh** to make any changes(not release)
 
-ifconfig - it wille be lost after reboot - it can be fixed by:
+![image](https://user-images.githubusercontent.com/47614594/155053302-1bbaec82-6d86-434f-8d90-1426856a7c0f.png)
 
-modify configuration files like /etc/network/interfaces. For example, to disable an interface you can simply remove its config part from the file.
+
+2. ifconfig - it wille be lost after reboot - it can be fixed by:
+
+modify configuration files like /etc/network/interfaces. To disable an interface you can simply remove its config part from the file.
 
 Content of /etc/network/interfaces:
 ```
@@ -142,15 +145,14 @@ Then we need to reload a interaface
 sudo systemctl restart networking.service
 ```
 
-for centos and redhat linux - https://devconnected.com/how-to-change-ip-address-on-linux/ 
+3. nmcli  
 
-nmcli - is used in AlmaLinux or centos exp. to reset interface - https://www.layerstack.com/resources/tutorials/How-to-restart-Network-Interface-or-Network-Adapter-on-Linux-and-Windows-Cloud-Servers
-```
-# nmcli networking off
-# nmcli networking on
-or
-# systemctl restart NetworkManager - AlmaLinux
-# systemctl restart NetworkManager.service - centos
-```
-#### Summary: 
-it can be made by ifconfig or nmcli
+```nmcli device modify <interface_name> ipv4.address <ip_address>``` 
+
+this command create file in  /etc/NetworkManager/system-connections 
+
+```nmcli device reapply <interface_name>```  - to aplay our changes 
+
+make in /etc/NetworkManager/system-connections  proper config, on end
+
+```nmcli device reapply```
